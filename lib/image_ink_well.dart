@@ -7,6 +7,7 @@ class _ImageInkWell extends StatelessWidget {
   final double width;
   final double height;
   final Color backgroundColor;
+  final BlendMode backgroundBlendMode;
   final Color splashColor;
 
   final ShapeBorder shape;
@@ -20,6 +21,7 @@ class _ImageInkWell extends StatelessWidget {
       @required this.width,
       @required this.height,
       this.backgroundColor,
+      this.backgroundBlendMode,
       this.splashColor,
       this.shape,
       this.borderRadius,
@@ -44,7 +46,8 @@ class _ImageInkWell extends StatelessWidget {
             shape: (shape is RoundedRectangleBorder && borderRadius == null)
                 ? BoxShape.circle
                 : BoxShape.rectangle,
-            image: DecorationImage(fit: fit, image: image)));
+            image: DecorationImage(fit: fit, image: image),
+            backgroundBlendMode: backgroundBlendMode));
   }
 }
 
@@ -56,6 +59,7 @@ class ImageInkWell extends _ImageInkWell {
       @required double width,
       @required double height,
       Color backgroundColor,
+      BlendMode backgroundBlendMode = BlendMode.multiply,
       Color splashColor,
       BoxFit fit = BoxFit.cover})
       : super(
@@ -65,6 +69,7 @@ class ImageInkWell extends _ImageInkWell {
             width: width,
             height: height,
             backgroundColor: backgroundColor,
+            backgroundBlendMode: backgroundBlendMode,
             splashColor: splashColor,
             fit: fit);
 }
@@ -76,6 +81,7 @@ class CircleImageInkWell extends _ImageInkWell {
       @required VoidCallback onPressed,
       @required double size,
       Color backgroundColor = Colors.white,
+      BlendMode backgroundBlendMode = BlendMode.multiply,
       Color splashColor = Colors.black26,
       BoxFit fit = BoxFit.cover})
       : super(
@@ -85,6 +91,7 @@ class CircleImageInkWell extends _ImageInkWell {
             width: size,
             height: size,
             backgroundColor: backgroundColor,
+            backgroundBlendMode: backgroundBlendMode,
             splashColor: splashColor,
             fit: fit,
             shape: RoundedRectangleBorder(
@@ -100,6 +107,7 @@ class RoundedRectangleImageInkWell extends _ImageInkWell {
       @required double height,
       @required BorderRadius borderRadius,
       Color backgroundColor = Colors.white,
+      BlendMode backgroundBlendMode = BlendMode.multiply,
       Color splashColor = Colors.black26,
       BoxFit fit = BoxFit.cover})
       : super(
@@ -109,6 +117,7 @@ class RoundedRectangleImageInkWell extends _ImageInkWell {
             width: width,
             height: height,
             backgroundColor: backgroundColor,
+            backgroundBlendMode: backgroundBlendMode,
             splashColor: splashColor,
             fit: fit,
             borderRadius: borderRadius,
